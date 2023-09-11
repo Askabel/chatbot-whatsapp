@@ -1,4 +1,4 @@
-const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
+/*const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
 
 const MetaProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
@@ -15,7 +15,7 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
  * Primero declaras los submenus 1.1 y 2.1, luego el 1 y 2 y al final el principal.
  */
 
-const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario'])
+/*const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario'])
 
 const flowDocs = addKeyword(['doc', 'documentacion', 'documentación']).addAnswer(
     [
@@ -71,16 +71,95 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
         null,
         null,
         [flowDocs, flowGracias, flowTuto, flowDiscord]
-    )
+    )*/
+
+    const { createBot, createProvider, createFlow, addKeyword, addAnswer } = require('@bot-whatsapp/bot')
+
+const WebWhatsappProvider = require('@bot-whatsapp/provider/baileys')
+const MockAdapter = require('@bot-whatsapp/database/mock')
+
+const {EVENTS} = require('@bot-whatsapp/bot')
+
+/*Flujos de sectores*/
+/*Cañada*/
+
+const flujoCombCda = addKeyword('combustible', 'combustibles')
+.addAnswer('*Contacto Combustibles CR*')
+
+const flujoDerivadosCda = addKeyword('derivado', 'derivados')
+.addAnswer('*Contacto Derivados CR*')
+
+const flujoAgroCda = addKeyword('agro')
+.addAnswer('*Contacto Agro CR*')
+
+const flujoLubriCda = addKeyword('lubricante', 'lubricantes')
+.addAnswer('*Contacto Lubricantes CR*')
+
+/*Santa Teresa*/
+
+const flujoCombST = addKeyword('combustible', 'combustibles')
+.addAnswer('*Contacto Combustibles ST*')
+
+const flujoDerivadosST = addKeyword('derivado', 'derivados')
+.addAnswer('*Contacto Derivados ST*')
+
+const flujoAgroST = addKeyword('agro')
+.addAnswer('*Contacto Agro ST*')
+
+const flujoLubriST = addKeyword('lubricante', 'lubricantes')
+.addAnswer('*Contacto Lubricantes ST*')
+
+/*Lehmann*/
+
+const flujoCombLmn = addKeyword('combustible', 'combustibles')
+.addAnswer('*Contacto Combustibles Lehmann*')
+
+const flujoDerivadosLmn = addKeyword('derivado', 'derivados')
+.addAnswer('*Contacto Derivados Lehmann*')
+
+const flujoAgroLmn = addKeyword('agro')
+.addAnswer('*Contacto Agro Lehmann*')
+
+const flujoLubriLmn = addKeyword('lubricante', 'lubricantes')
+.addAnswer('*Contacto Lubricantes Lehmann*')
+
+
+/*Flujos de sucursales*/ 
+const flujoCañada = addKeyword(['1','cañada rosquin','cañada','rosquin','cda'])
+.addAnswer('Usted desea comunicarse con la base de *Cañada Rosquin*. Indique a continuación con qué sector desea ponerse en contacto')
+.addAnswer(['*Combustibles*','*Derivados*','*Agro*','*Lubricantes*'], null, null, [flujoCombCda, flujoDerivadosCda, flujoAgroCda, flujoLubriCda])
+
+const flujoSantaTeresa = addKeyword(['2','santa teresa','santa','teresa','st'])
+.addAnswer('Usted desea comunicarse con la base de *Santa Teresa*. Indique a continuación con qué sector desea ponerse en contacto')
+.addAnswer(['*Combustibles*','*Derivados*','*Agro*','*Lubricantes*'], null, null, [flujoCombST, flujoDerivadosST, flujoAgroST, flujoLubriST])
+
+const flujoLehmann = addKeyword(['3','lehmann','lehman','leman'])
+.addAnswer('Usted desea comunicarse con la base de *Lehmann*. Indique a continuación con qué sector desea ponerse en contacto')
+.addAnswer(['*Combustibles*','*Derivados*','*Agro*','*Lubricantes*'], null, null, [flujoCombLmn, flujoDerivadosLmn, flujoAgroLmn, flujoLubriLmn])
+
+/*Flujos principales*/ 
+const flujoPrincipal = addKeyword('hola','buenas','buenos dias','buenas tardes','buenas noches','que tal','ola','saludos')
+.addAnswer('Gracias por comunicarse con Avanzar SA. A continuación, indique con cuál de nuestras bases desea ponerse en contacto')
+.addAnswer(['*1. Cañada Rosquin*','*2. Santa Teresa*','*3. Lehmann*'], null, null, [flujoCañada, flujoSantaTeresa, flujoLehmann])
+
+const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
+.addAnswer('¡Gracias por elegirnos!')
+
+
+/**
+ * Esta es la funcion importante es la que realmente inicia
+ * el chatbot.
+ */
+
 
 const main = async () => {
     const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([flowPrincipal])
 
     const adapterProvider = createProvider(MetaProvider, {
-        jwtToken: process.env.JWTOKEN, //EAAH7WLPZAWukBOww40W4UZA5STe33dPPlp3euMbNZCG5gc4XK7iv6NR6YGLGgWR0SeFtDdDaZBrZAijMMzjrKFlQu3a5URBp5EBWuZBTrZBIjKxut1n4P8U7GAqdDwVCyU5hlj2ZAq56b6h2gMZBs1ulZAoiVLNl55yCy4Lk4MZAusc1VjJmvy7fZBR7wQEZCf2ZAIR0LIP70YybC2x7YqRfwl431csV9uDJAZD
-        numberId: process.env.NUMBER_ID, //128667113656028
-        verifyToken: process.env.VERIFY_TOKEN, //654ersdf65g4a32rt15dsf3sd1f15awer6sdfuiAEAST5A45
+        jwtToken: 'EAAH7WLPZAWukBO4ZBuSe3in55oZAw4hPP2AhMEKyObAoW16jNWQ1YChIltG6aUUwkOhNhd7ZAs9RVGCITC6qYtcCMC5XZAm3Dmpns9j6x0VH9bGlZCSpMsiwqna95DynnUnOIZA2f4rvtrGPj4frXomdY72D91UNYFmS4Pq7lIiBXZAnVJzO451O9hHX4cVwcN1tyHT7HIR0NrXSrvQWdE3aog6xowsZD',
+        numberId: '128667113656028',
+        verifyToken: '654ersdf65g4a32rt15dsf3sd1f15awer6sdfuiAEAST5A45',
         version:'v16.0'
     })
 
