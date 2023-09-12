@@ -73,8 +73,8 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
         [flowDocs, flowGracias, flowTuto, flowDiscord]
     )*/
 
-    const { createBot, createProvider, createFlow, addKeyword, addAnswer } = require('@bot-whatsapp/bot')
-
+    const { createBot, createProvider, createFlow, addKeyword, addAnswer } = require('@bot-whatsapp/bot', 'dotenv')
+    
 const WebWhatsappProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
@@ -157,9 +157,9 @@ const main = async () => {
     const adapterFlow = createFlow([flujoPrincipal])
 
     const adapterProvider = createProvider(MetaProvider, {
-        jwtToken: 'EAAH7WLPZAWukBO4ZBuSe3in55oZAw4hPP2AhMEKyObAoW16jNWQ1YChIltG6aUUwkOhNhd7ZAs9RVGCITC6qYtcCMC5XZAm3Dmpns9j6x0VH9bGlZCSpMsiwqna95DynnUnOIZA2f4rvtrGPj4frXomdY72D91UNYFmS4Pq7lIiBXZAnVJzO451O9hHX4cVwcN1tyHT7HIR0NrXSrvQWdE3aog6xowsZD',
-        numberId: '128667113656028',
-        verifyToken: '654ersdf65g4a32rt15dsf3sd1f15awer6sdfuiAEAST5A45',
+        jwtToken: process.env.JWT_TOKEN,
+        numberId: process.env.NUMBER_ID,
+        verifyToken: process.env.VERIFY_TOKEN,
         version:'v16.0'
     })
 
