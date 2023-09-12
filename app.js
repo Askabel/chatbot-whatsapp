@@ -75,7 +75,7 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
 
     const { createBot, createProvider, createFlow, addKeyword, addAnswer } = require('@bot-whatsapp/bot')
 
-const WebWhatsappProvider = require('@bot-whatsapp/provider/baileys')
+const WebWhatsappProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
 const {EVENTS} = require('@bot-whatsapp/bot')
