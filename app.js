@@ -149,7 +149,7 @@ const flowMensaje = addKeyword('hola')
             capture: true,
         },
         async (ctx, {provider}) => {
-            await provider.sendtext('15551022952', 'mensaje')
+            await provider.sendtext(ctx.from, 'mensaje')
             //==> ctx.from puede ser reemplazado por un número de teléfono
             //ej: 59170000000, donde el 591 es el código de país y el 70000000 es el número de teléfono
         }
