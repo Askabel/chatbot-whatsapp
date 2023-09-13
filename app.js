@@ -1,6 +1,6 @@
 /*const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
 
-*/const MetaProvider = require('@bot-whatsapp/provider/meta')/*
+const MetaProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
 /**
@@ -138,9 +138,22 @@ const flujoLehmann = addKeyword(['3','lehmann','lehman','leman'])
 .addAnswer(['*Combustibles*','*Derivados*','*Agro*','*Lubricantes*'], null, null, [flujoCombLmn, flujoDerivadosLmn, flujoAgroLmn, flujoLubriLmn])
 
 /*Flujos principales*/ 
-const flujoPrincipal = addKeyword('hola','buenas','buenos dias','buenas tardes','buenas noches','que tal','ola','saludos')
+/*const flujoPrincipal = addKeyword('hola','buenas','buenos dias','buenas tardes','buenas noches','que tal','ola','saludos')
 .addAnswer('Gracias por comunicarse con Avanzar SA. A continuación, indique con cuál de nuestras bases desea ponerse en contacto')
-.addAnswer(['*1. Cañada Rosquin*','*2. Santa Teresa*','*3. Lehmann*'], null, null, [flujoCañada, flujoSantaTeresa, flujoLehmann])
+.addAnswer(['*1. Cañada Rosquin*','*2. Santa Teresa*','*3. Lehmann*'], null, null, [flujoCañada, flujoSantaTeresa, flujoLehmann])*/
+
+const flowMensaje = addKeyword('hola')
+    .addAnswer(
+        'Aqui va un mensaje',
+        {
+            capture: true,
+        },
+        async (ctx, {provider}) => {
+            await provider.sendtext(ctx.from, 'mensaje')
+            //==> ctx.from puede ser reemplazado por un número de teléfono
+            //ej: 59170000000, donde el 591 es el código de país y el 70000000 es el número de teléfono
+        }
+    )
 
 const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
 .addAnswer('¡Gracias por elegirnos!')
@@ -154,9 +167,9 @@ const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flujoPrincipal])
+    const adapterFlow = createFlow([/*flujoPrincipal*/, flujoGracias, flowMensaje])
 
-    const adapterProvider = createProvider(MetaProvider, {
+    const adapterProvider = createProvider(WebWhatsappProvider, {
         jwtToken: process.env.JWT_TOKEN,
         numberId: process.env.NUMBER_ID,
         verifyToken: process.env.VERIFY_TOKEN,
