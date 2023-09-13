@@ -147,12 +147,12 @@ const flowMensaje = addKeyword('hola')
         'Aqui va un mensaje',
         {
             capture: true,
+            buttons: [
+                {body: 'opcion 1'},
+                {body: 'opcion 2'},
+                {body: 'opcion 3'},
+            ]
         },
-        async (ctx, {provider}) => {
-            await provider.sendtext(ctx.from, 'mensaje')
-            //==> ctx.from puede ser reemplazado por un número de teléfono
-            //ej: 59170000000, donde el 591 es el código de país y el 70000000 es el número de teléfono
-        }
     )
 
 const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
