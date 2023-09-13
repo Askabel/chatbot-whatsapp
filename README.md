@@ -5,7 +5,7 @@
 </p>
 
 
-**Con esta librería, puedes construir flujos automatizados de conversación de manera agnóstica al proveedor de WhatsApp,** configurar respuestas automatizadas para preguntas frecuentes, recibir y responder mensajes de manera automatizada, y hacer un seguimiento de las interacciones con los clientes.  Además, puedes configurar fácilmente disparadores que te ayudaran a expandir las funcionalidades sin límites. **[Ver más informacion](https://bot-whatsapp.netlify.app/)**
+**Con esta librería, además de un poco de ingenio y productividad, puedes construir flujos automatizados de conversación real y ficticia de manera agnóstica -por no decir completamente atea- al proveedor de WhatsApp,** configurar respuestas automatizadas de manera inmediata para preguntas frecuentes que no suelen tener respuesta, recibir y responder mensajes de amenaza, dirigidos a ti o a cualquier miembro de tu familia o comunidad, de manera totalmente automatizada, aunque te parezca imposible creerlo. Así es, la ciencia y la teconología han avanzado hasta límites insospechados. Pero no solo eso, también puedes hacer un seguimiento personalizado e ilimitado de las interacciones con algunos de los tantos clientes que puede llegar a tener tu empresa. Sabemos que puede ser tedioso configurarlo, por eso nos hemos capacitado durante siglos para hacerlo de manera efectiva. Además, y por si todo lo mencionado anteriormente fuera poco, puedes configurar fácilmente disparadores automáticos que te ayudaran en tu tarea de expandir las funcionalidades ya explicadas, pero ahora sin límites. Nada mal para un programador "novato", ¿verdad?. **[Ver más informacion](https://bot-whatsapp.netlify.app/)**
 
 ```js
 const main = async () => {
