@@ -138,11 +138,11 @@ const flujoLehmann = addKeyword(['3','lehmann','lehman','leman'])
 .addAnswer(['*Combustibles*','*Derivados*','*Agro*','*Lubricantes*'], null, null, [flujoCombLmn, flujoDerivadosLmn, flujoAgroLmn, flujoLubriLmn])
 
 /*Flujos principales*/ 
-/*const flujoPrincipal = addKeyword('hola','buenas','buenos dias','buenas tardes','buenas noches','que tal','ola','saludos')
+const flujoPrincipal = addKeyword('hola','buenas','buenos dias','buenas tardes','buenas noches','que tal','ola','saludos')
 .addAnswer('Gracias por comunicarse con Avanzar SA. A continuación, indique con cuál de nuestras bases desea ponerse en contacto')
-.addAnswer(['*1. Cañada Rosquin*','*2. Santa Teresa*','*3. Lehmann*'], null, null, [flujoCañada, flujoSantaTeresa, flujoLehmann])*/
+.addAnswer(['*1. Cañada Rosquin*','*2. Santa Teresa*','*3. Lehmann*'], null, null, [flujoCañada, flujoSantaTeresa, flujoLehmann])
 
-const flowMensaje = addKeyword('hola')
+/*const flowMensaje = addKeyword('hola')
     .addAnswer(
         'Aqui va un mensaje',
         {
@@ -152,7 +152,7 @@ const flowMensaje = addKeyword('hola')
                 {body: 'opcion 2'},
                 {body: 'opcion 3'},
             ]
-        },
+        }*/,
     )
 
 const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
