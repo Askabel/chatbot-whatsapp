@@ -4,14 +4,17 @@ const MetaProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
 /**
+ * 
  * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
- *
+ *  
  *          Menu Principal
  *           - SubMenu 1
  *             - Submenu 1.1
  *           - Submenu 2
  *             - Submenu 2.1
- *
+ *  
+ *        
+ *  
  * Primero declaras los submenus 1.1 y 2.1, luego el 1 y 2 y al final el principal.
  */
 
@@ -71,10 +74,10 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
         null,
         null,
         [flowDocs, flowGracias, flowTuto, flowDiscord]
-    )*/
+        )*/
 
     const { createBot, createProvider, createFlow, addKeyword, addAnswer } = require('@bot-whatsapp/bot', 'dotenv')
-    
+
 const WebWhatsappProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
@@ -152,8 +155,8 @@ const flujoPrincipal = addKeyword('hola','buenas','buenos dias','buenas tardes',
                 {body: 'opcion 2'},
                 {body: 'opcion 3'},
             ]
-        }*/,
-    )
+        },
+    )*/
 
 const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
 .addAnswer('¡Gracias por elegirnos!')
@@ -167,7 +170,7 @@ const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flujoPrincipal, flujoGracias, /*flowMensaje*/])
+    const adapterFlow = createFlow([flujoPrincipal, flujoGracias])
 
     const adapterProvider = createProvider(WebWhatsappProvider, {
         jwtToken: process.env.JWT_TOKEN,
@@ -179,9 +182,9 @@ const main = async () => {
     createBot({
         flow: adapterFlow,
         provider: adapterProvider,
-        database: adapterDB,
-    })
+        database: adapterDB 
+    }) 
 }
 
 main()
-/**/
+
