@@ -167,7 +167,7 @@ const flujoGracias = addKeyword('gracias','grax','muchas gracias','ok')
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([/*flujoPrincipal*/, flujoGracias, flowMensaje])
+    const adapterFlow = createFlow([flujoPrincipal, flujoGracias, /*flowMensaje*/])
 
     const adapterProvider = createProvider(WebWhatsappProvider, {
         jwtToken: process.env.JWT_TOKEN,
